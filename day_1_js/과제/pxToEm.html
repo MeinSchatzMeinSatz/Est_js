@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>pxToEm 버튼 만들기</title>
+    </head>
+    <body>
+        <h1>em 계산기</h1>
+        <label for="basicFont"></label>
+        <input type="number" id="basicFont" />
+        <label for="inputFont"></label>
+        <input type="number" id="inputFont" />
+        <button type="button" onclick="pxToEm()">button</button>
+
+        <script>
+            const basicFont = document.getElementById("basicFont");
+            const inputFont = document.getElementById("inputFont");
+
+            function pxToEm() {
+                const a = Number(basicFont.value);
+                const b = Number(inputFont.value);
+
+                console.log(`${b} = ${b / a}em`);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hello World 출력하기</title>
+        <script src="./001.js"></script>
+    </head>
+    <body>
+        <h1>콘솔창 찍어보기 <span>Hello, World</span></h1>
+        <h1>나는 두번째 h1이야. <b>SECOND</b></h1>
+        <script src="./001_b.js"></script>
+        <script>
+            console.log("003");
+            console.log(document.getElementsByTagName("h1"));
+
+            console.log(document.getElementsByTagName("h1")[0]);
+            console.log(document.getElementsByTagName("h1")[0].textContent);
+            console.log(document.getElementsByTagName("h1")[0].innerHTML);
+
+            console.log(document.getElementsByTagName("h1")[1].textContent);
+            console.log(document.getElementsByTagName("h1")[1].innerHTML);
+        </script>
+    </body>
+</html>
