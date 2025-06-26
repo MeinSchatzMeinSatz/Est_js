@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>addEventListener</title>
+    </head>
+    <body>
+        <h1>버튼을 클릭하세요</h1>
+        <input type="color" id="userColor" />
+        <input type="text" id="input" />
+        <button type="button" id="btn">클릭</button>
+        <p id="result"></p>
+
+        <script>
+            //버튼을 클릭하면 printValue()를 호출하겠다.
+            // '버튼', '이벤트 : 클릭', printValue 호출
+            const btn = document.getElementById("btn");
+            const result = document.getElementById("result");
+            const input = document.getElementById("input");
+            const color = document.getElementById("userColor");
+
+            btn.style.backgroundColor = "red";
+
+            // btn.addEventListener('이벤트', 실행할함수)
+
+            // 버튼을 클릭하면, 사용자가 입력한 글을 #result에 출력하겠다.
+            btn.addEventListener("click", function (e) {
+                // 클릭이벤트가 발생했을 때에 실행할 구문
+
+                console.log(e.target);
+                console.log(e.currentTarget);
+
+                result.textContent = input.value;
+            });
+
+            input.addEventListener("input", function (e) {
+                result.textContent = e.target.value;
+            });
+
+            // 컬러박스의 컬러를 선택하면, 그 값을 result에 출력하세요.
+
+            color.addEventListener("input", function (e) {
+                document.body.style.backgroundColor = e.target.value;
+            });
+
+            // document.body.addEventListener("click", function (e) {
+            //     console.log(e.target);
+            //     console.log(e.currentTarget);
+            // });
+        </script>
+    </body>
+</html>

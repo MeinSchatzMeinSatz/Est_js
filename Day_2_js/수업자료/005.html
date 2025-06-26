@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 버튼 3개 '가위', '바위' '보' -->
+
+        <button type="button" class="play" onclick="playGame('가위')">
+            가위
+        </button>
+        <button type="button" class="play" onclick="playGame('바위')">
+            바위
+        </button>
+        <button type="button" class="play" onclick="playGame('보')">보</button>
+
+        <p id="result"></p>
+
+        <script>
+            // gamePlay() 가위바위보 시작
+            // 각각의 버튼을 클릭했을때 '가위', '바위', '보'라는 텍스트를 콘솔에 출력하시오.
+
+            // function playGame(play) {
+            //     console.log(play);
+            // }
+
+            // 비기거나 / 이기거나 지거나
+
+            // function playGame(userChoice) {
+            //     // aiChoice === userChoice '비겼습니다' -> 같지않다면 (이기거나, 졌습니다.)
+            //     if (aiChoice === userChoice) {
+            //         console.log("비겼습니다.");
+            //     } else {
+            //         console.log("이기거나, 졌습니다.");
+            //     }
+            // }
+
+            // 가위바위보 게임 완성
+            const rsp = ["가위", "바위", "보"];
+
+            const result = document.getElementById("result");
+
+            function playGame(userChoice) {
+                const aiChoice = rsp[Math.floor(Math.random() * rsp.length)];
+                let message = "";
+                const userWin =
+                    (userChoice === "가위" && aiChoice === "보") ||
+                    (userChoice === "바위" && aiChoice === "가위") ||
+                    (userChoice === "보" && aiChoice === "바위");
+
+                if (aiChoice === userChoice) {
+                    message = "비겼습니다.";
+                } else if (userWin) {
+                    message = "이겼습니다.";
+                } else {
+                    message = "졌습니다.";
+                }
+                result.textContent = `게임결과 : ${message}`;
+            }
+        </script>
+    </body>
+</html>
