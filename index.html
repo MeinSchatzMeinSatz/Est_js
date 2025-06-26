@@ -13,6 +13,8 @@
         <p id="result"></p>
 
         <script>
+            //미완성
+
             //버튼을 클릭하면 printValue()를 호출하겠다.
             // '버튼', '이벤트 : 클릭', printValue 호출
             const btn = document.getElementById("btn");
@@ -22,9 +24,6 @@
 
             btn.style.backgroundColor = "red";
 
-            // btn.addEventListener('이벤트', 실행할함수)
-
-            // 버튼을 클릭하면, 사용자가 입력한 글을 #result에 출력하겠다.
             btn.addEventListener("click", function (e) {
                 // 클릭이벤트가 발생했을 때에 실행할 구문
 
@@ -43,19 +42,6 @@
             color.addEventListener("input", function (e) {
                 document.body.style.backgroundColor = e.target.value;
             });
-
-            // input, change
-            // 과제, bodyChangeColor.html
-            // 셀렉트태그 이용 (색상을 여러가지 지정)
-            // 문서의 배경색 바꾸기
-
-            // 과제 2
-            // Guess a Number(1~10)
-
-            // document.body.addEventListener("click", function (e) {
-            //     console.log(e.target);
-            //     console.log(e.currentTarget);
-            // });
         </script>
     </body>
 </html>

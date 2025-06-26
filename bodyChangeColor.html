@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>bodyChangeColor</title>
+    </head>
+    <body>
+        <div>
+            <p>문서의 배경색 바꾸기</p>
+            <select name="colorChange" id="colorChange">
+                <option value="lightcoral">ligthcoral</option>
+                <option value="lightblue">lightblue</option>
+                <option value="lightgreen">lightgreen</option>
+                <option value="lightpink">lightpink</option>
+                <option value="yellow">yellow</option>
+            </select>
+        </div>
+
+        <script>
+            // 셀렉트 태그를 고르면, 문서의 배경색을 바꾸겠다.
+            colorChange.addEventListener("select", function (e) {
+                document.body.style.backgroundColor = e.target.value;
+            });
+        </script>
+    </body>
+</html>

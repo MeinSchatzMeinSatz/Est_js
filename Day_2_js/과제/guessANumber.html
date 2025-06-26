@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Guess a Number</title>
+    </head>
+    <body>
+        <div>
+            <h1>Guess a Number(1~10)</h1>
+            <input type="number" id="userChoice" />
+            <button type="button" id="btn">확인</button>
+            <p id="result"></p>
+        </div>
+
+        <script>
+            //미완성
+
+            const btn = document.getElementById("btn");
+            const userChoice = document.getElementById("userChoice");
+            const result = document.getElementById("result");
+
+            btn.addEventListener("click", function (e) {
+                // 클릭이벤트가 발생했을 때에 실행할 구문
+
+                const aiChoice = Math.ceil(Math.random() * 10);
+                let message = "";
+
+                if (userChoice.value === aiChoice) {
+                    message = "정답입니다! 축하드려요 🎉";
+                } else if (userChoice.value < aiChoice) {
+                    message = "숫자가 작습니다.";
+                } else {
+                    message = "숫자가 큽니다.";
+                }
+
+                result.textContent = `${message}`;
+            });
+        </script>
+    </body>
+</html>
