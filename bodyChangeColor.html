@@ -19,7 +19,10 @@
 
         <script>
             // 셀렉트 태그를 고르면, 문서의 배경색을 바꾸겠다.
-            colorChange.addEventListener("select", function (e) {
+            // ⭐️이 부분 부르는 법.
+            document.body.style.backgroundColor = colorChange.value;
+
+            colorChange.addEventListener("change", function (e) {
                 document.body.style.backgroundColor = e.target.value;
             });
         </script>
