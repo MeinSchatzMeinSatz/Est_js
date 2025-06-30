@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul id="ul"></ul>
+
+        <script>
+            const users = ["Daniel", "Don", "donald", "Michael", "Juliet"];
+            const ul = document.getElementById("ul");
+
+            // JavaScript 로 li 를 마크업하기
+
+            users.forEach((user, idx) => {
+                const li = document.createElement("li");
+                li.textContent = [user];
+                const btn = document.createElement("button");
+                btn.textContent = "❌";
+                ul.appendChild(li);
+                li.appendChild(btn);
+            });
+        </script>
+    </body>
+</html>

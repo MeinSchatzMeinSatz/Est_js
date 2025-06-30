@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul id="list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Scss</li>
+            <li>jQuery</li>
+        </ul>
+
+        <script>
+            // HTML문서 가져오기
+            // querySelector, querySelectorAll
+            const lis = document.querySelectorAll("li");
+            console.log(lis, lis.textContent);
+
+            // for 문으로 li의 컨텐츠를 콘솔에 찍기
+            for (let i = 0; i < lis.length; i++) {
+                console.log(lis[i].innerText);
+            }
+            // forEach문으로 li의 콘텐츠 콘솔에 찍기
+            lis.forEach((li) => {
+                console.log(li.innerText);
+            });
+        </script>
+    </body>
+</html>
