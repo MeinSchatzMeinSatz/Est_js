@@ -31,6 +31,7 @@ console.log(
     Array(50)
         .fill(0)
         .map((num, index) => (num += index + 1))
+        .reduce((acc, cur) => acc + cur, 0)
 );
 
 const today = new Date();
