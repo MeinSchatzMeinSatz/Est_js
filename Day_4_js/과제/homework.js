@@ -49,3 +49,14 @@ const animals = ["puppy", "cat", "fox"];
 
 animals.splice(1, 0, "parrot", "rabbit");
 console.log(animals);
+
+// Quiz 9. animals 변수의 값을 거꾸로 출력하세요.
+console.log(animals.reverse());
+
+const str = "Hello";
+// Quiz 10. str문자를 배열로 변환하시오.
+console.log(str.split(""));
+
+const arr = ["Today", "is", "Monday", "!"];
+// Quiz 11. arr을 문자열로 만들되, 사이에 공백을 넣어서 작성하세요.
+console.log(arr.join(" "));
