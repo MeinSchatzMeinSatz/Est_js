@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Cafe 계산서</title>
+    </head>
+    <body>
+        <form action="" id="form">
+            <label for="beverage">음료 선택</label>
+            <select name="" id="beverage"></select>
+
+            <label for="size">사이즈 선택</label>
+            <select name="" id="size"></select>
+
+            <label for="count">수량</label>
+            <select name="" id="count"></select>
+        </form>
+        <script>
+            const coffee = document.getElementById("beverage");
+            const size = document.getElementById("size");
+            const count = document.getElementById("count");
+
+            coffee.addEventListener("select", (e) => {});
+            size.addEventListener("select", (e) => {});
+            count.addEventListener("select", (e) => {});
+
+            function renderList() {
+                //screen rendering
+                coffee.innerHTML = "";
+            }
+        </script>
+    </body>
+</html>
