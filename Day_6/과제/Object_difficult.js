@@ -23,6 +23,26 @@ person.sayHello = function (name) {
 
 person.sayHello("Ghost");
 
+// 5. 생성자 함수로 user 객체를 만들고, 인스턴스를 생성하세요.
+// -> 아직 모르는 내용
+function users(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const user1 = new users("Ghost", 1000);
+
+console.log(user1);
+
+// 6. user 생성자에 sayHello 메서드를 프로토타입으로 추가하세요.
+users.sayHello = function () {
+    console.log(`Hello, ${this.name}`);
+};
+
+const userHello = users.sayHello();
+
+userHello;
+
 // 7. 객체의 key를 기준으로 정렬된 배열을 만드세요.
 const obj3 = { b: 2, a: 1, c: 3 };
 const obj3keys = Object.keys(obj3).sort((a, b) => a.localeCompare(b));
