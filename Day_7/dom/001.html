@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이벤트와 이벤트 위임</title>
+        <link rel="stylesheet" href="./css/dom.css" />
+        <style>
+            .btn {
+                background-color: #e8e8e8;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="all-container">
+            <div class="menu-container">
+                <button class="btn">
+                    <img src="./images/irangi_01.png" alt="irangi" />
+                </button>
+                <button class="btn">
+                    <img src="./images/irangi_02.png" alt="irangi" />
+                </button>
+                <button class="btn">
+                    <img src="./images/irangi_03.png" alt="irangi" />
+                </button>
+            </div>
+        </div>
+
+        <ul id="list">
+            <li>Apple</li>
+            <li>Mango</li>
+            <li>Banana</li>
+        </ul>
+        <!-- ul에 클릭이벤트를 추가하여, 현재 클릭된 요소의 컨텐츠가 콘솔에 찍히도록처리 -->
+
+        <p id="p">
+            Hello world
+            <span>SPAN</span>
+            <strong>STRONG</strong>
+        </p>
+
+        <div id="testBox">
+            <strong>STRONG</strong>
+            <em>EM</em>
+            <p>Paragraph</p>
+        </div>
+
+        <!-- testBox에 클릭이벤트가 발생하면, 그 타겟이 EM 일때만 콘솔에 '클릭'을 출력 -->
+
+        <script>
+            // 이벤트 위임. 부모가 이벤트를 위임받는 것.
+            const list = document.querySelector("#list");
+            const p = document.getElementById("p");
+            const testBox = document.querySelector("#testBox");
+
+            function mouseClick(e) {
+                const isTarget = e.target.nodeName === "EM";
+                if (isTarget) {
+                    console.log("click");
+                }
+            }
+
+            testBox.addEventListener("click", mouseClick);
+
+            function doSomething(e) {
+                const isTarget = e.target.nodeName === "STRONG";
+                if (isTarget) {
+                    console.log("That's Strong");
+                }
+            }
+
+            p.addEventListener("click", doSomething);
+            console.log(list);
+            list.addEventListener("click", function (event) {
+                console.log(event.target.innerHTML);
+            });
+        </script>
+    </body>
+</html>
