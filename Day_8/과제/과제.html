@@ -33,9 +33,6 @@
                 padding: 10px;
             }
 
-            .thumbs {
-            }
-
             .thumbs img {
                 width: 70px;
                 border-radius: 5px;
@@ -53,17 +50,17 @@
         <div class="container">
             <div class="detailView">
                 <img
-                    src="./images/irangi_01.png"
+                    src="../images/irangi_01.png"
                     alt="Is it hard?"
                     class="detail_img"
                 />
                 <p class="description">Is it hard?</p>
             </div>
             <div class="thumbs">
-                <img src="./images/irangi_02.png" data-alt="Dont give up" />
-                <img src="./images/irangi_03.png" data-alt="Coffee" />
-                <img src="./images/irangi_04.png" data-alt="I am angry" />
-                <img src="./images/irangi_05.png" data-alt="walking" />
+                <img src="../images/irangi_02.png" data-alt="Dont give up" />
+                <img src="../images/irangi_03.png" data-alt="Coffee" />
+                <img src="../images/irangi_04.png" data-alt="I am angry" />
+                <img src="../images/irangi_05.png" data-alt="walking" />
             </div>
         </div>
 
@@ -73,18 +70,15 @@
             const thumbs = document.querySelectorAll(".thumbs img");
 
             thumbs.forEach((img) => {
-                img.addEventListener("mouseenter", (e) => {
+                img.addEventListener("mouseenter", () => {
                     const url = img.getAttribute("src");
-                    const alt = thumbs.dataset.alt;
+                    const alt = img.dataset.alt;
                     detail.setAttribute("src", url);
                     detail.setAttribute("alt", alt);
+
+                    description.textContent = alt;
                 });
             });
-
-            /*질문
-            const detail = document.querySelectorAll(".detailView img")
-            로 DOM으로 불러왔을경우, thumbs.forEach 안의 img.addEventListener 안에서 detail.setAttribute로 불러오는 방법?
-            */
         </script>
     </body>
 </html>
