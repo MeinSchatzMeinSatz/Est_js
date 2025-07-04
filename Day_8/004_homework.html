@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이미지 갤러리 과제</title>
+        <style>
+            .container {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 600px;
+                border: 1px solid #d8d8d8;
+                border-radius: 10px;
+                padding: 20px;
+                margin: 50px auto;
+            }
+
+            .container img {
+                max-width: 100%;
+            }
+
+            .detailView {
+                flex: 0 0 auto;
+                width: 300px;
+                position: relative;
+            }
+
+            .description {
+                position: absolute;
+                inset: auto 0 0 0;
+                background-color: rgba(0, 0, 0, 0.2);
+                padding: 10px;
+            }
+
+            .thumbs {
+            }
+
+            .thumbs img {
+                width: 70px;
+                border-radius: 5px;
+                border: 1px solid #333;
+                cursor: pointer;
+            }
+
+            .thumbs img:hover {
+                border-color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="detailView">
+                <img
+                    src="./images/irangi_01.png"
+                    alt="Is it hard?"
+                    class="detail_img"
+                />
+                <p class="description">Is it hard?</p>
+            </div>
+            <div class="thumbs">
+                <img src="./images/irangi_02.png" data-alt="Dont give up" />
+                <img src="./images/irangi_03.png" data-alt="Coffee" />
+                <img src="./images/irangi_04.png" data-alt="I am angry" />
+                <img src="./images/irangi_05.png" data-alt="walking" />
+            </div>
+        </div>
+
+        <script>
+            const detail = document.querySelector(".detail_img");
+            const description = document.querySelector(".description");
+            const thumbs = document.querySelectorAll(".thumbs img");
+
+            thumbs.forEach((img) => {
+                img.addEventListener("mouseenter", (e) => {
+                    const url = img.getAttribute("src");
+                    const alt = thumbs.dataset.alt;
+                    detail.setAttribute("src", url);
+                    detail.setAttribute("alt", alt);
+                });
+            });
+
+            /*질문
+            const detail = document.querySelectorAll(".detailView img")
+            로 DOM으로 불러왔을경우, thumbs.forEach 안의 img.addEventListener 안에서 detail.setAttribute로 불러오는 방법?
+            */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            img {
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./images/irangi_01.png" alt="어려워요?" class="img1" />
+        <div class="btn-container">
+            <button type="button" id="btn1" data-alt="Is it difficult">
+                01
+            </button>
+            <button type="button" id="btn2" data-alt="Don't give up">02</button>
+            <button type="button" id="btn3" data-alt="Coffee">03</button>
+        </div>
+
+        <script>
+            /* Attribute 제어 */
+            // 이미지에 마우스를 올리면 Irnagi_02.png로 변경 alt = "Don't give up"
+
+            const img1 = document.querySelector(".img1");
+            // const btn1 = document.querySelector("#btn1");
+            // const btn2 = document.querySelector("#btn2");
+            // const btn3 = document.querySelector("#btn3");
+
+            const btns = document.querySelectorAll(".btn-container button");
+
+            console.log(img1.getAttribute("src"));
+            console.log(img1.getAttribute("alt"));
+
+            btns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const url = `./images/irangi_${btn.textContent}.png`;
+                    const alt = btn.dataset.alt;
+                    img1.setAttribute("src", url);
+                    img1.setAttribute("alt", alt);
+                });
+            });
+
+            // 내가 실습한 내용
+            // img1.setAttribute("src", "./images/irangi_02.png");
+            // img1.setAttribute("alt", "Don't Give Up");
+
+            // btn1.addEventListener("click", (e) => {
+            //     img1.setAttribute("src", "./images/irangi_01.png");
+            //     img1.setAttribute("alt", "어려워요?");
+            // });
+            // btn2.addEventListener("click", (e) => {
+            //     img1.setAttribute("src", "./images/irangi_02.png");
+            //     img1.setAttribute("alt", "Don't Give Up");
+            // });
+            // btn3.addEventListener("click", (e) => {
+            //     img1.setAttribute("src", "./images/irangi_03.png");
+            //     img1.setAttribute("alt", "커피는 챙겨야지~");
+            // });
+        </script>
+    </body>
+</html>

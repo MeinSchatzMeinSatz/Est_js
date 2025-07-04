@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DOM traversing</title>
+    </head>
+    <body>
+        <div class="box" id="parent">
+            <p>First Child</p>
+            <button name="btn">Click</button>
+            <p>Third Child</p>
+        </div>
+
+        <p id="output"></p>
+        <script>
+            const parent = document.getElementById("parent");
+            const output = document.getElementById("output");
+            parent.addEventListener("click", (e) => {
+                const target = e.target;
+                console.log(target.parentElement);
+                console.log(target.closest("div"));
+                console.log(target.nextElementSibling);
+                console.log(target.previousElementSibling);
+                console.log(target.children);
+                // console.log(`
+                // 부모 : ${target.parentElment},
+                // 첫번째 자식요소 : ${target.firstElementChild},
+                // 다음 형제 : ${target.nextElementSibling},
+                // 이전 형제 : ${target.previousElementSibling},
+                // 가장 가까운 div요소 : ${target.closest("div")}
+                // `);
+            });
+        </script>
+    </body>
+</html>
