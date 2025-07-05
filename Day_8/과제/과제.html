@@ -65,7 +65,7 @@
         </div>
 
         <script>
-            const detail = document.querySelector(".detail_img");
+            const detail = document.querySelectorAll(".detailView img");
             const description = document.querySelector(".description");
             const thumbs = document.querySelectorAll(".thumbs img");
 
@@ -73,8 +73,8 @@
                 img.addEventListener("mouseenter", () => {
                     const url = img.getAttribute("src");
                     const alt = img.dataset.alt;
-                    detail.setAttribute("src", url);
-                    detail.setAttribute("alt", alt);
+                    detail[0].setAttribute("src", url);
+                    detail[0].setAttribute("alt", alt);
 
                     description.textContent = alt;
                 });
