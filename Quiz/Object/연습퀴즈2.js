@@ -5,4 +5,6 @@ const users = [
     { name: "Camel", age: 19 },
 ];
 
-// 2. user객체를 복사하여 age만 30으로 바꾼 새 객체를 만드세요.
+users.forEach((item) => {
+    console.log(item.name);
+});
