@@ -101,5 +101,9 @@ function handleClick() {
 }
 
 const throttledClick = throttle(handleClick, 1000);
+document.getElementById("button").addEventListener("click", throttledClick);
 
-console.log(handleClick());
+// 디바운싱
+// : 일정 시간 동안 추가 입력이 없을 떄 한 번만 실행
+// => 마지막 입력 후 일정 시간이 지나면 실행
+// : 계속적인 입력이 필요한 상황에서 실행. 회원가입할때 유효성 검사.
