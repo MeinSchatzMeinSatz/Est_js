@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>get 요청</title>
+    </head>
+    <body>
+        <pre></pre>
+        <script>
+            //  XMLHttpRequest 객체 생성
+            const xhr = new XMLHttpRequest();
+
+            // HTTP 요청 초기화
+            // todos 리소스에서 모든 todo를 취득(index)
+            xhr.open("GET", "/todos");
+
+            // HTTP 요청 전송
+            xhr.send();
+        </script>
+    </body>
+</html>

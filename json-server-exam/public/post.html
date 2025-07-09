@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>post</title>
+    </head>
+    <body>
+        <pre></pre>
+        <script>
+            const xhr = new XMLHttpRequest();
+
+            xhr.open("POST", "/todos");
+
+            xhr.setRequestHeader("content-type", "application/json");
+
+            xhr.send(
+                JSON.stringify({ id: 5, content: "React", completed: false })
+            );
+
+            xhr.onload = () => {
+                //status 프로퍼티 값이 200(ok) 또는 201(Created)이면 정상적으로 응답된 상태다.
+                if (xhr.status === 200 || xhr.status === 201) {
+                    document.querySelector("pre").textContent = xhr.response;
+                } else {
+                    console.log("Error", xhr.status, xhr.statusText);
+                }
+            };
+        </script>
+    </body>
+</html>
