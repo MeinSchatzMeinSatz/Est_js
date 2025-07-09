@@ -75,10 +75,10 @@ Promise.resolve().then(() => {
 });
 console.log(4);
 
-// 6. 잘못된 비동기 처리
+// 6. 잘못된 비동기 처리 (콜백을 중첩)
 function asyncFunc1() {
     setTimeout(() => {
-        return 10;
+        return 10; // return 대신 callback으로 값 전달
     }, 1000);
 }
 

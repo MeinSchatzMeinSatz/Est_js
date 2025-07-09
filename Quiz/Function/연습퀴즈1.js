@@ -62,4 +62,12 @@ const makeArray = (a, b) => {
     return [a, b];
 };
 
-console.log(makeArray(1, 2));
+console.log(makeArray(1, 3));
+
+// 10. 함수에서 객체 반환
+// 이름과 나이를 받아 객체{name, age}를 반환하는 makePerson 함수를 작성하시오.
+function makePerson(name, age) {
+    return { name: name, age: age };
+}
+
+console.log(makePerson("Ghost", 1000));

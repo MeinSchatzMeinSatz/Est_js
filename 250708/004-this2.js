@@ -23,7 +23,7 @@ introduce(20, "yoga");
 const person = { name: "채준" };
 
 introduce.call(person, 20, "yoga");
-introduce.apply(person, [20, "yoga"]); // 인자를 배열로 전달
+introduce.apply(person, [20, "yoga"]); // 인자를 "배열"로 전달
 // 같은 방식으로 작동하지만, 인자를 전달하는 방식만 다르다.
 
 // 3. bind

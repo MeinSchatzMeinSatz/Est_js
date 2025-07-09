@@ -1,38 +1,48 @@
-const customer = {
-    name: "빙키",
-    phone: "010-1234-5678",
-    greet() {
-        console.log(`안녕하세요! ${this.name}입니다. 연락처: ${this.phone}`);
-    },
-};
+// 1. 함수에서 typeof 사용
+// 매개변수의 타입을 반환하는 getType 함수를 작성하시오.
 
-const newCustomer = {
-    name: "지지",
-    phone: "010-1111-2222",
-};
+function getType(param) {
+    return typeof param;
+}
 
-const newGreet = customer.greet.bind(newCustomer); // 여기에 bind 코드 작성 // 출력 예시: "안녕하세요! 지지입니다. 연락처: 010-1111-2222"
+console.log(getType("Hello"));
+console.log(getType(123));
+console.log(getType("123"));
+console.log(getType(true));
 
-newGreet();
+// 2. 함수에서 isNaN 사용
+// 값이 NaN이면 true를 반환하는 isValueNaN 함수를 작성하시오.
 
-const counter = {
-    count: 0,
+function isValueNaN(param) {
+    if (isNaN(param)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-    handleClick() {
-        console.log(this); // <button id="clickBtn">클릭 횟수: 0</button>
-        console.log(this.count);
-        this.count++;
-        document.getElementById(
-            "clickBtn"
-        ).textContent = `클릭 횟수: ${this.count}`;
-    },
+console.log(isValueNaN(123));
+console.log(isValueNaN("Hello"));
 
-    init() {
-        // TODO: bind를 사용해서 아래 코드를 수정해 보세요.
-        document
-            .getElementById("clickBtn")
-            .addEventListener("click", this.handleClick);
-    },
-};
+// 3. 함수에서 arguments 객체 사용
+// 모든 인수의 곱을 반환하는 multiplyAll 함수를 작성하시오.
 
-counter.init();
+function multiplyAll(...args) {
+    return args.reduce((acc, cur) => acc * cur, 1);
+}
+// "arguments" 는 배열이 아니기 때문에(유사배열객체) 바로 reduce()를 쓸 수 없다.
+// "...args"는 배열이므로 reduce()를 사용할 수 있다.
+// 요약 : 나머지 매개변수(...args)는 진짜 배열이고, argument는 유사 배열 객체다.
+
+console.log(multiplyAll(1, 2, 3, 5));
+
+// 4. 함수에서 재귀 사용.
+function factorial(num) {
+    if (num === 1 || num === 0) {
+        num = 0;
+    }
+
+    return num * factorial(num - 1);
+}
+
+console.log(factorial(3));
