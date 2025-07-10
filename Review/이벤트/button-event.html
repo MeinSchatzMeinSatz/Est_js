@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>button event</title>
+    </head>
+    <body>
+        <button>Click me!</button>
+        <script>
+            const $button = document.querySelector("button");
+
+            // 시용자가 버튼을 클릭하면 함수를 호출하도록 요청
+            $button.onclick = () => {
+                alert("button click");
+            };
+        </script>
+    </body>
+</html>
