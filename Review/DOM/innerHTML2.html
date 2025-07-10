@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>innerHTML</title>
+    </head>
+    <body>
+        <ul id="fruits">
+            <li class="apple">Apple</li>
+        </ul>
+        <script>
+            const $fruits = document.getElementById("fruits");
+
+            // 노드 추가
+            $fruits.innerHTML += `<li class="banana>Banana</li>`;
+
+            // 노드 교체
+            $fruits.innerHTML = `<li class="orange">Orange</li>`;
+
+            // 노드 제거
+            $fruits.innerHTML = ``;
+        </script>
+    </body>
+</html>

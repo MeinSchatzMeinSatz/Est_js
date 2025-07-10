@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>input 요소 노드 객체의 프로토타입 체인</title>
+    </head>
+    <body>
+        <input type="text" />
+        <script>
+            // input 요소 노드 객체를 선택
+            const $input = document.querySelector("input");
+
+            // input 요소 노드 객체의 프로토타입 체인
+            console.log(
+                Object.getPrototypeOf($input) === HTMLInputElement.prototype,
+                Object.getPrototypeOf(HTMLInputElement.prototype) ===
+                    HTMLElement.prototype,
+                Object.getPrototypeOf(HTMLElement.prototype) ===
+                    Element.prototype,
+                Object.getPrototypeOf(Element.prototype) === Node.prototype,
+                Object.getPrototypeOf(Node.prototype) === EventTarget.prototype,
+                Object.getPrototypeOf(EventTarget.prototype) ===
+                    Object.prototype
+            );
+
+            // 배열이 객체인 동시에 배열인 것처럼 input 요소 노드 객체도 다음과 같이 다양한 특성을 갖는 객체이며, 이러한 특성을 나타내는 기능들을 상속을 통해 제공받는다.
+            // Object = EventTarget = Node = Element = HTMLElement = HTMLInputElement
+        </script>
+    </body>
+</html>

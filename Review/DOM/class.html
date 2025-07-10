@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul id="fruits">
+            <li id="apple">Apple</li>
+            <li id="banana">Banana</li>
+            <li id="orange">Orange</li>
+        </ul>
+        <div class="banana">Banana</div>
+        <script>
+            // DOM 전체에서 class 값이 "banana"인 요소 노드를 모두 탐색하여 HTMLCollection 객체에 담아 반환한다.
+            const $bananasFromDocument =
+                document.getElementsByClassName("banana");
+            console.log($bananasFromDocument);
+            // HTMLCollection(2) [li.banana, div.banana]
+
+            // #fruits 요소의 자손 노드 중에서 class 값이 "banana"인 요소 노드를 모두 탐색하여 반환한다.
+            const $fruits = document.getElementById("fruits");
+            const $bananasFromFruits = $fruits.getElementsByClassName("banana");
+
+            console.log(console.log($bananasFromFruits));
+        </script>
+    </body>
+</html>

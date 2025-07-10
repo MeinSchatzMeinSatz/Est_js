@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="foo">Hello <span>World!</span></div>
+        <script>
+            // HTML 마크업이 파싱되어 요소 노드의 자식 노드로 DOM에 반영된다.
+            document.getElementById("foo").innerHTML = `Hi <span>there!</span>`;
+        </script>
+    </body>
+</html>
+l
