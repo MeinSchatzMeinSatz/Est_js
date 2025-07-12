@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Register EventHandler2</title>
+    </head>
+    <body>
+        <button>Click me!</button>
+        <script>
+            const $button = document.querySelector("button");
+
+            // 이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩
+            $button.addEventListener("click", function () {
+                console.log("button click");
+            });
+            // addEventListener방식
+            $button.addEventListener("click", function () {
+                console.log("button click");
+            });
+        </script>
+    </body>
+</html>

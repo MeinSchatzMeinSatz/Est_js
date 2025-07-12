@@ -1,18 +1,12 @@
-/*
-로컬 스토리지를 이용한 메모장 서비스 만들기
-- memo/index.html(완성된 템플릿, 스타일 미구현)
-- memo/script.js (구현해야 할 기능, *주석 참고)
-*/
-
-// DOM 요소 선택
+// DOM 요소
 const memoForm = document.getElementById("memo-form");
 const titleInput = document.getElementById("title-input");
 const contentInput = document.getElementById("content-input");
 const memoList = document.getElementById("memo-list");
 
 // 전역 변수
-let memoData = []; // 메모 데이터를 담는 배열
-const MEMO_KEY = "memo"; // 로컬스토리지 키
+let memoData = [];
+const MEMO_KEY = "memo";
 
 /*
 - 메모 객체 구조: {title: "메모 제목", content: "메모 내용"}
@@ -45,6 +39,7 @@ function renderMemo() {
         const li = document.createElement("li");
         li.textContent = "작성된 메모가 없습니다.";
         memoList.appendChild(li);
+        console.log("작성된 메모가 없습니다.");
     }
     // 메모가 있으면 반복문으로 각 메모를 화면에 출력
     memoData.forEach((memo) => {
@@ -67,11 +62,11 @@ memoForm.addEventListener("submit", (e) => {
     // 기본 제출 동작 방지
     e.preventDefault();
     // 입력값 가져오기 (trim() 사용)
-    title = titleInput.value.trim();
-    content = contentInput.value.trim();
+    const title = titleInput.value.trim();
+    const content = contentInput.value.trim();
     // 제목이 비어있으면 경고 메시지
     if (!title) {
-        alert("제목을 입력해주세요.");
+        alert("제목이 비어있습니다. 제목을 입력해주세요.");
         titleInput.focus();
         return;
     }
@@ -87,12 +82,4 @@ memoForm.addEventListener("submit", (e) => {
     renderMemo();
 });
 
-// TODO 5: 메모 삭제 함수 (선택 과제)
-function deleteMemo(index) {
-    // 해당 인덱스의 메모를 배열에서 제거
-    // 로컬스토리지 업데이트
-    // 메모 목록 재렌더링
-}
-
-// 페이지 로드 시 실행
 loadMemoStorage();

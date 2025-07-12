@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이벤트 전파</title>
+    </head>
+    <body>
+        <ul id="fruits">
+            <li id="apple">Apple</li>
+            <li id="banana">Banana</li>
+            <li id="orange">Orange</li>
+        </ul>
+
+        <script>
+            const $fruits = document.getElementById("fruits");
+
+            $fruits.addEventListener("click", (e) => {
+                console.log(`이벤트 단계: ${e.eventPhase}`);
+                console.log(`이벤트 타깃: ${e.target}`);
+                console.log(`커런트 타깃: ${e.currentTarget}}`);
+            });
+        </script>
+    </body>
+</html>
