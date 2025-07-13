@@ -47,10 +47,17 @@ function renderMemo() {
         memoList.appendChild(li);
     }
     // 메모가 있으면 반복문으로 각 메모를 화면에 출력
-    memoData.forEach((memo) => {
+    memoData.forEach((memo, idx) => {
         const li = document.createElement("li");
+        const btn = document.createElement("button");
         li.innerHTML = memo;
+        btn.textContent = "삭제";
         memoList.appendChild(li);
+        li.appendChild(btn);
+
+        btn.addEventListener("click", (e) => {
+            deleteMemo(idx);
+        });
     });
     // 삭제 버튼에 이벤트 리스너 추가
 }
@@ -90,8 +97,11 @@ memoForm.addEventListener("submit", (e) => {
 // TODO 5: 메모 삭제 함수 (선택 과제)
 function deleteMemo(index) {
     // 해당 인덱스의 메모를 배열에서 제거
+    memoData.splice(index, 1);
     // 로컬스토리지 업데이트
+    saveMemoStorage();
     // 메모 목록 재렌더링
+    renderMemo();
 }
 
 // 페이지 로드 시 실행

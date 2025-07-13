@@ -26,7 +26,7 @@ function renderMemo() {
         memoList.appendChild(li);
     }
     // 메모가 있는 경우 반복문으로 각 메모를 화면에 출력
-    memoData.forEach((memo) => {
+    memoData.forEach((memo, idx) => {
         const li = document.createElement("li");
         const btn = document.createElement("button");
         li.textContent = memo;
@@ -35,9 +35,10 @@ function renderMemo() {
         li.appendChild(btn);
 
         // 삭제 버튼에 이벤트 리스너 추가
-        btn.addEventListener("click", deleteMemo);
+        btn.addEventListener("click", () => {
+            deleteMemo(idx);
+        });
     });
-    // 삭제 버튼에 이벤트 리스너 추가
 }
 
 // 3. 로컬스토리지에 메모 데이터 저장하는 함수
@@ -76,7 +77,9 @@ function deleteMemo(index) {
     memoData.splice(index, 1);
     console.log(memoData);
     // 로컬스토리지 업데이트
+    saveMemoStorage();
     // 메모 목록 재렌더링
+    renderMemo();
 }
 
 loadMemoStorage();
