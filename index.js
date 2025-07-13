@@ -1,48 +1,32 @@
-// 1. 함수에서 typeof 사용
-// 매개변수의 타입을 반환하는 getType 함수를 작성하시오.
+// 사용자로부터 입력받은 휴대폰 전화번호
+const tel = "010-1234-5678";
 
-function getType(param) {
-    return typeof param;
-}
+// 정규 표현식 리터럴로 휴대폰 전화번호 패턴을 정의한다.
+const regExp = /^\d{3}-\d{4}-\d{4}$/;
 
-console.log(getType("Hello"));
-console.log(getType(123));
-console.log(getType("123"));
-console.log(getType(true));
+console.log(regExp.test(tel));
 
-// 2. 함수에서 isNaN 사용
-// 값이 NaN이면 true를 반환하는 isValueNaN 함수를 작성하시오.
+//메서드 종류
+const target = "Is this all there is?";
+const regExp2 = /is/;
+const regExp3 = /is/g;
+// exec
+// 패턴 : is
+// 플래그: i => 대소문자를 구별하지 않고 검색한다.
+console.log(regExp2.exec(target));
 
-function isValueNaN(param) {
-    if (isNaN(param)) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// test
+console.log(regExp2.test(target));
 
-console.log(isValueNaN(123));
-console.log(isValueNaN("Hello"));
+// match
+console.log(target.match(regExp2));
+console.log(target.match(regExp3));
 
-// 3. 함수에서 arguments 객체 사용
-// 모든 인수의 곱을 반환하는 multiplyAll 함수를 작성하시오.
+// 플래그
+console.log("----flag----");
+console.log(target.match(/is/));
+console.log(target.match(/is/i));
+console.log(target.match(/is/g));
+console.log(target.match(/is/m));
 
-function multiplyAll(...args) {
-    return args.reduce((acc, cur) => acc * cur, 1);
-}
-// "arguments" 는 배열이 아니기 때문에(유사배열객체) 바로 reduce()를 쓸 수 없다.
-// "...args"는 배열이므로 reduce()를 사용할 수 있다.
-// 요약 : 나머지 매개변수(...args)는 진짜 배열이고, argument는 유사 배열 객체다.
-
-console.log(multiplyAll(1, 2, 3, 5));
-
-// 4. 함수에서 재귀 사용.
-function factorial(num) {
-    if (num === 1 || num === 0) {
-        num = 0;
-    }
-
-    return num * factorial(num - 1);
-}
-
-console.log(factorial(3));
+// 패턴

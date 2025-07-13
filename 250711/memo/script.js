@@ -84,7 +84,7 @@ memoForm.addEventListener("submit", (e) => {
     }
     // 새 메모 객체를 memoData 배열 맨 앞에 추가
     // 예: memoData.unshift({ title: "제목", content: "내용" });
-    memoData.unshift(`{title: ${title}, content: ${content}}`);
+    memoData.unshift(`title: ${title}, content: ${content}`);
     // 로컬스토리지 저장
     saveMemoStorage();
     // 입력 필드 초기화
