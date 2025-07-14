@@ -1,10 +1,5 @@
-// "use strict";
-
-// 1. 변수 선언을 강제
-function func1() {
-    "user strict";
-    let x;
-    x = 10;
-    console.log(x);
+function solution(my_string) {
+    return my_string;
 }
-func1();
+
+console.log(solution("aAb1B2cC34oOp"));
