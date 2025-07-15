@@ -43,3 +43,5 @@ console.log(Object.getOwnPropertyDescriptor(user, "password"));
 Object.freeze(user);
 
 export { user };
+
+// Object.freeze(obj), Object.defineProperty(obj,key, {})

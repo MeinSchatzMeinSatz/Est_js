@@ -1,6 +1,8 @@
 // TODO2-1: 기본 계산 함수들을 import 하세요
 import { add, subtract, multiply, divide } from "./calculator/basic.js";
+import { userState, changeUserState } from "./user/userManager.js";
 
+const h1 = document.querySelector("h1");
 const num1Input = document.getElementById("num1");
 const num2Input = document.getElementById("num2");
 const resultText = document.getElementById("result");
@@ -58,18 +60,19 @@ function calculator(operation) {
 // TODO5-1: 업그레이드 버튼 이벤트 리스너를 추가하세요
 upgradeBtn.addEventListener("click", async () => {
     // TODO5-2: 사용자 상태를 변경하세요
-    const { changeUserState, userState } = await import(
-        "./user/userManager.js"
-    );
-    changeUserState(!userState);
+
+    changeUserState(true);
     console.log(userState);
     // TODO5-3: userState를 확인하여 고급 기능을 활성화하세요
     if (userState) {
         try {
             // 동적 import로 advance.js 모듈을 로드하세요
+
             const { power, squareRoot } = await import(
                 "./calculator/advance.js"
             );
+            h1.textContent = "고오급 계산기";
+
             // 고급 계산기 이벤트 리스너를 추가하세요
             document.getElementById("power").addEventListener("click", () => {
                 calculator(power);
@@ -84,13 +87,19 @@ upgradeBtn.addEventListener("click", async () => {
             // UI를 변경하여 고급 계산기를 표시하고, 고급 기능이 활성화 메시지를 화면에 출력하세요
             document.getElementById("advance-calculator").style.display =
                 "block";
+            upgradeBtn.style.display = "none";
+
             alert("고급 기능이 활성화 되었습니다.");
         } catch (error) {
             // 에러 메시지를 콘솔 및 화면에 출력하세요
-            alert(error);
+            console.error(error);
+            resultText.textContent =
+                "[오류] 고급 계산기 기능을 로드할 수 없습니다.";
         }
     } else {
         // 권한이 없는 경우 "고급 계산기 사용 권한이 없습니다." 메시지를 화면에 출력해주세요.
-        alert("고급 계산기를 사용하실 권한이 없습니다.");
+        // 방어적 프로그래밍의 개념
+        resultText.textContent =
+            "[오류] 고급 계산기를 사용하실 권한이 없습니다.";
     }
 });
