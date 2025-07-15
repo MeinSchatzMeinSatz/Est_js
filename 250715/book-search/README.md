@@ -11,7 +11,7 @@ book-search/
 
 ## API 명세
 
-- 카카오 API 문서: https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-book
+-   카카오 API 문서: https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-book
 
 ```
 // 카카오 책 검색 API 정보
