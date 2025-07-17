@@ -78,3 +78,9 @@ console.log(p.name);
 
 // 10. 함수에서 call/apply 사용
 // 함수 showName을 obj의 this로 실행하여 "Tom"을 출력하세 하시오.
+
+const obj1 = { name: "Tom" };
+function showName() {
+    console.log(this.name);
+}
+showName.call(obj1);

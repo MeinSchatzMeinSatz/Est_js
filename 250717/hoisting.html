@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>hoisting</title>
+    </head>
+    <body>
+        <script>
+            // 1.
+            // console.log(testValue); // undefined
+
+            // var testValue = 100;
+
+            // 2.
+            console.log(test());
+            console.log(test2());
+
+            function test() {
+                return "test";
+            }
+            var test2 = function () {
+                return "test2";
+            };
+        </script>
+    </body>
+</html>
