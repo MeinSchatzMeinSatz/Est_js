@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export function useScroll() {
     const [isBottom, setIsBottom] = useState();
 
