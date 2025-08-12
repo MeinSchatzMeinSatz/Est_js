@@ -18,13 +18,38 @@
             const $throttleMsg = document.querySelector(".throttle-msg");
 
             const debounce = (callback, delay) => {
-                let timeId;
+                let timerId;
                 return (...args) => {
                     if (timerId) clearTimeout(timerId);
-                    timerId = setTimeout(callback, dleay, ...args);
+                    timerId = setTimeout(callback, delay, ...args);
                 };
             };
-            // 여기부터 작성!
+
+            const throttle = (callback, delay) => {
+                let timerId;
+                return (...args) => {
+                    if (timerId) return;
+                    setTimeout(() => {
+                        callback(...args);
+                    }, delay);
+                };
+            };
+
+            $button.addEventListener("click", () => {
+                $normalMsg.textContent = +$normalMsg.textContent + 1;
+            });
+            $button.addEventListener(
+                "click",
+                debounce(() => {
+                    $debounceMsg.textContent = +$debounceMsg.textContent + 1;
+                }, 500)
+            );
+            $button.addEventListener(
+                "click",
+                throttle(() => {
+                    $throttleMsg.textContent = +$throttleMsg.textContent + 1;
+                }, 500)
+            );
         </script>
     </body>
 </html>
