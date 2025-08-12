@@ -1,28 +1,24 @@
-// useContext를 사용하고 구현
-
-import { createContext, useState, useContext } from "react";
-import LanguageSelector from "./LangSelector";
-import Content from "./Content";
-import { LanguageContext, Languages } from "./LanguageProvider";
-
-function Header() {
-    const { title } = useContext(LanguageContext).currentLanguage;
-    return <h2>{title}</h2>;
-}
+import Contents from "./Contents";
+import LangSelector from "./LangSelector";
+import { LanguageProvider } from "./LanguageProvider";
+import useDarkMode from "./Hook/useDarkMode";
+import Greetings from "./Greetings";
+// 이부분 임포트
 
 function App() {
-    const [language, setLanguage] = useState("ko");
-    const currentLanguage = Languages[language];
+    const [darkMode, toggleDarkMode] = useDarkMode();
+    // button 추가
 
     return (
-        // useContext를 사용할 것이라서 매우 깔끔해진 것을 볼 수 있습니다.
-        <LanguageContext.Provider
-            value={{ currentLanguage, language, setLanguage }}
-        >
-            <LanguageSelector />
-            <Header />
-            <Content />
-        </LanguageContext.Provider>
+        <LanguageProvider>
+            <button onClick={toggleDarkMode} style={{ marginBottom: 16 }}>
+                {darkMode ? "라이트 모드" : "다크 모드"}
+            </button>
+            {/* 이 부분 버튼 추가*/}
+            <LangSelector />
+            <Contents />
+            <Greetings />
+        </LanguageProvider>
     );
 }
 

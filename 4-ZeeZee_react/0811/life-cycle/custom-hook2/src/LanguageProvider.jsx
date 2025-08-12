@@ -1,8 +1,8 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
+// 수정(import)
+import useLocalStorage from "./Hook/UseLocalStorage";
 
-const LanguageContext = createContext();
-
-const Languages = {
+const languages = {
     en: {
         title: "Multi-language App",
         greeting: "Hello, welcome to our app!",
@@ -23,4 +23,23 @@ const Languages = {
     },
 };
 
-export default { LanguageContext, Languages };
+const LanguageContext = createContext();
+
+function LanguageProvider({ children }) {
+    // 수정(아래 2줄)
+    const { myLang } = useLocalStorage();
+    const [languageState, setLanguageState] = useState(myLang);
+
+    const changeLanguage = (lang) => {
+        setLanguageState(lang);
+    };
+    return (
+        <LanguageContext.Provider
+            value={{ languageState, changeLanguage, languages }}
+        >
+            {children}
+        </LanguageContext.Provider>
+    );
+}
+
+export { LanguageProvider, LanguageContext };

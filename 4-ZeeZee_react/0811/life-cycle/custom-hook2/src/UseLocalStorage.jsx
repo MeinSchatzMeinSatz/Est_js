@@ -17,8 +17,8 @@ export default function LangSelector() {
                     value={myLang}
                 >
                     <option value="en">English</option>
-                    <option value="ko">한국어</option>
-                    <option value="ja">日本語</option>
+                    <option value="ko">Korean</option>
+                    <option value="ja">Japanese</option>
                 </select>
             </form>
             <hr />
