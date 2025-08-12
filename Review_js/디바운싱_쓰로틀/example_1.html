@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>디바운싱과 쓰로틀</title>
+    </head>
+    <body>
+        <button>Click me</button>
+        <pre>일반 클릭 이벤트 카운터 <span class="normal-msg">0</span></pre>
+        <pre>디바운스 클릭 이벤트 카운터 <span class="debounce-msg">0</span></pre>
+        <pre>쓰로틀 클릭 이벤트 카운터 <span class="throttle-msg">0</span></pre>
+
+        <script>
+            const $button = document.querySelector("button");
+            const $normalMsg = document.querySelector(".normal-msg");
+            const $debounceMsg = document.querySelector(".debounce-msg");
+            const $throttleMsg = document.querySelector(".throttle-msg");
+
+            const debounce = (callback, delay) => {
+                let timeId;
+                return (...args) => {
+                    if (timerId) clearTimeout(timerId);
+                    timerId = setTimeout(callback, dleay, ...args);
+                };
+            };
+            // 여기부터 작성!
+        </script>
+    </body>
+</html>
