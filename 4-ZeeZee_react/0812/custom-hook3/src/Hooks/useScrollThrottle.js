@@ -28,6 +28,7 @@ export function useScrollThrottle() {
                         10 >=
                         document.documentElement.offsetHeight
                 );
+                console.log("scroll");
             }, 100)
         );
     }, []);

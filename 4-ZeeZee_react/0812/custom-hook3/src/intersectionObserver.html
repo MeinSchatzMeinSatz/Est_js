@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Intersection Observer 사용법</title>
+    </head>
+    <body>
+        <script>
+            const option = {
+                root: null, // 뷰포트 자체를 기준점으로 삼게 됨.
+                threshold: 0, // 몇 퍼센트 겹칠때 작성할지 보여주는 함수
+            };
+
+            // 1px 이라도 겹칠때 발동
+            const callback = (entries) => {
+                entries.forEach((entry) => {
+                    // 실제 개발을 할 떄 여기에 원하는 동작 코드를 작성
+                    // entry.isIntersection
+                    // // 뷰포트에 들어왔는지 알려줘
+                    // entry.intersectionRatio
+                    // //
+                    // entry.target
+                    // // 관찰 대상 요소를 알려줘
+                });
+            };
+
+            const observer = new IntersectionObserver(callback, option);
+            // option 겹칠때의 조건을 줄 수 있어.
+
+            observer.observe(target);
+            // 관찰할 대상 지정
+
+            observer.unobserve(target);
+            // 타겟에 대한 관찰을 종료
+
+            observer.disconnet();
+            // 모든 요소에 대한 관찰 중지
+        </script>
+    </body>
+</html>
