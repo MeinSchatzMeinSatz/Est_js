@@ -2,6 +2,8 @@ import { useScrollObserver } from "./Hooks/useScrollObserver_solution";
 import { useState, useEffect } from "react";
 import "./App.css";
 
+import { ClipLoader } from "react-spinners";
+
 // 과제:
 // 1. 이미지 데이터 불러오기(화면이 나오자마자 데이터 불러오기)
 // 2. 이미지 렌더링
@@ -11,11 +13,13 @@ import "./App.css";
 function ImageList() {
     const [photos, setPhotos] = useState([]);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
     const isBottom = useScrollObserver();
 
     // API를 호출해서 데이터 가져오는 함수
     const getPhotos = async (pageNum) => {
         try {
+            setIsLoading(true);
             let url = `https://picsum.photos/v2/list?page=${pageNum}&limit=5`;
             let response = await fetch(url);
 
@@ -26,8 +30,10 @@ function ImageList() {
 
             // 이 부분 복습시 참고
             setPhotos((prev) => [...prev, ...data]);
+            setIsLoading(false);
         } catch (error) {
             console.error(error, "에러 발생");
+            setIsLoading(false);
         }
     };
 
@@ -55,6 +61,12 @@ function ImageList() {
                     <img src={photo.download_url} alt={photo.author} />
                 </li>
             ))}
+            <ClipLoader
+                color="#f9ca11"
+                loading={isLoading}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
         </ul>
     );
 }
