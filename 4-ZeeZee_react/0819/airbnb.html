@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb 실습</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.js"></script>
+    <style>
+      ul {
+        display: flex;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      li button {
+        list-style: none;
+        border: 2px solid black;
+        padding: 2px 5px;
+        margin: 3px;
+      }
+
+      .active {
+        background-color: lightcoral;
+        border: 3px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Redux Airbnb 필터링</h1>
+      <div class="filter_btn">
+        <h2>편의시설 필터:</h2>
+        <ul>
+          <li><button>무료 주차 공간</button></li>
+          <li><button>대형 욕조</button></li>
+          <li><button>바베큐 그릴</button></li>
+          <li><button>게스트용 별채</button></li>
+          <li><button>수영장</button></li>
+          <li><button>주방</button></li>
+          <li><button>TV</button></li>
+        </ul>
+      </div>
+      <ul>
+        <li></li>
+      </ul>
+    </header>
+
+    <main>
+      <div class="results-box">
+        <!-- 여기 결과가 나올거여 -->
+      </div>
+    </main>
+
+    <script>
+      const listings = [
+        {
+          id: 1,
+          title: "도심 아파트",
+          location: "강남구",
+          price: "85,000원",
+          amenities: ["무료 주차 공간", "주방", "TV"],
+        },
+        {
+          id: 2,
+          title: "럭셔리 펜트하우스",
+          location: "한남동",
+          price: "250,000원",
+          amenities: ["대형 욕조", "수영장", "게스트용 별채", "주방", "TV"],
+        },
+        {
+          id: 3,
+          title: "바다뷰 펜션",
+          location: "해운대",
+          price: "120,000원",
+          amenities: ["바베큐 그릴", "주방", "무료 주차 공간"],
+        },
+        {
+          id: 4,
+          title: "산속 별장",
+          location: "평창",
+          price: "95,000원",
+          amenities: ["바베큐 그릴", "게스트용 별채", "무료 주차 공간", "TV"],
+        },
+        {
+          id: 5,
+          title: "모던 스튜디오",
+          location: "홍대",
+          price: "65,000원",
+          amenities: ["주방", "TV"],
+        },
+        {
+          id: 6,
+          title: "리조트 빌라",
+          location: "제주도",
+          price: "180,000원",
+          amenities: [
+            "수영장",
+            "대형 욕조",
+            "바베큐 그릴",
+            "무료 주차 공간",
+            "주방",
+            "TV",
+          ],
+        },
+      ];
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리덕스 실습</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Mozilla+Headline:wght@200..700&family=Pacifico&family=Playwrite+MX+Guides&family=Sankofa+Display&display=swap");
+
+      .total-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+
+        border: solid 1px black;
+
+        padding: 10px;
+      }
+
+      .box {
+        border: solid 2px;
+        border-color: black;
+        width: 200px;
+        height: 100px;
+
+        text-align: center;
+      }
+
+      .font_box1 {
+        font-family: "Mozilla Headline", sans-serif;
+      }
+      .font_box2 {
+        font-family: "Google Sans Code", monospace;
+      }
+      .font_box3 {
+        font-family: "Playwrite MX Guides", cursive;
+      }
+      .font_box4 {
+        font-family: "Pacifico", cursive;
+      }
+      .font_box5 {
+        font-family: "Sankofa Display", sans-serif;
+      }
+      .font_box6 {
+        font-family: "Edu NSW ACT Cursive", cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="total-container">
+      <div class="button_box">
+        <input type="text" />
+        <button type="submit" class="submit_btn">Click Me!</button>
+        <button class="rounded_btn">Rounded!</button>
+        <button class="circle_btn">Circle!</button>
+        <button class="rect_btn">Rect!</button>
+        <button class="red_btn">Red!</button>
+        <button class="green_btn">Green!</button>
+        <button class="blue_btn">Blue!</button>
+      </div>
+      <div class="content">
+        <div class="box font_box1">hello</div>
+        <div class="box font_box2">hello</div>
+        <div class="box font_box3">hello</div>
+        <div class="box font_box4">hello</div>
+        <div class="box font_box5">hello</div>
+        <div class="box font_box6">hello</div>
+      </div>
+    </div>
+    <script>
+      const $box = document.querySelectorAll(".box");
+      const $input = document.querySelector("input");
+      const $submitBtn = document.querySelector(".submit_btn");
+      const $roundedBtn = document.querySelector(".rounded_btn");
+      const $circleBtn = document.querySelector(".circle_btn");
+      const $rectBtn = document.querySelector(".rect_btn");
+      const $redBtn = document.querySelector(".red_btn");
+      const $greenBtn = document.querySelector(".green_btn");
+      const $blueBtn = document.querySelector(".blue_btn");
+
+      console.log($box, $input.value);
+
+      $submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log($input.value);
+        $box.forEach((content) => {
+          content.textContent = $input.value;
+        });
+      });
+
+      $roundedBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        $box.forEach((content) => {
+          content.style.borderRadius = "10px";
+        });
+      });
+      $circleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        $box.forEach((content) => {
+          content.style.borderRadius = "50px";
+        });
+      });
+      $rectBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        $box.forEach((content) => {
+          content.style.borderRadius = "0px";
+        });
+      });
+      $redBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        $box.forEach((content) => {
+          content.style.borderColor = "red";
+        });
+      });
+      $greenBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        $box.forEach((content) => {
+          content.style.borderColor = "green";
+        });
+      });
+      $blueBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        $box.forEach((content) => {
+          content.style.borderColor = "blue";
+        });
+      });
+    </script>
+  </body>
+</html>
