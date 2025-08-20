@@ -6,54 +6,80 @@
     <title>Airbnb 실습</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.js"></script>
     <style>
-      ul {
-        display: flex;
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
       }
 
-      li {
-        list-style: none;
+      .filter-btn {
+        padding: 8px 16px;
+        margin: 5px;
+        border: 2px solid #ddd;
+        background: white;
+        cursor: pointer;
       }
 
-      li button {
-        list-style: none;
-        border: 2px solid black;
-        padding: 2px 5px;
-        margin: 3px;
+      .filter-btn.active {
+        background: #ff5a5f;
+        color: white;
       }
 
-      .active {
-        background-color: lightcoral;
-        border: 3px solid black;
+      .listing {
+        border: 3px solid #ddd;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .listing.hidden {
+        display: none;
+      }
+
+      .amenity {
+        display: inline-block;
+        background-color: #f0f0f0;
+        padding: 2px 6px;
+        margin: 2px;
+        font-size: 12px;
+      }
+
+      .amenity.highlight {
+        background: #ff5a5f;
+        color: white;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Redux Airbnb 필터링</h1>
-      <div class="filter_btn">
-        <h2>편의시설 필터:</h2>
-        <ul>
-          <li><button>무료 주차 공간</button></li>
-          <li><button>대형 욕조</button></li>
-          <li><button>바베큐 그릴</button></li>
-          <li><button>게스트용 별채</button></li>
-          <li><button>수영장</button></li>
-          <li><button>주방</button></li>
-          <li><button>TV</button></li>
-        </ul>
-      </div>
-      <ul>
-        <li></li>
-      </ul>
-    </header>
+    <h1>Redux Airbnb 필터링</h1>
 
-    <main>
-      <div class="results-box">
-        <!-- 여기 결과가 나올거여 -->
-      </div>
-    </main>
+    <div>
+      <h3>편의시설 필터:</h3>
+      <button class="filter-btn" onclick="toggleFilter('무료 주차 공간')">
+        무료 주차 공간
+      </button>
+      <button class="filter-btn" onclick="toggleFilter('대형 욕조')">
+        대형 욕조
+      </button>
+      <button class="filter-btn" onclick="toggleFilter('바베큐 그릴')">
+        바베큐 그릴
+      </button>
+      <button class="filter-btn" onclick="toggleFilter('게스트용 별채')">
+        게스트용 별채
+      </button>
+      <button class="filter-btn" onclick="toggleFilter('수영장')">
+        수영장
+      </button>
+      <button class="filter-btn" onclick="toggleFilter('주방')">주방</button>
+      <button class="filter-btn" onclick="toggleFilter('TV')">TV</button>
+    </div>
+
+    <div id="resultInfo"></div>
+
+    <div id="listingContainer">
+      <!-- 숙소 목록이 여기에 렌더링 -->
+    </div>
 
     <script>
+      // 샘플 데이터
       const listings = [
         {
           id: 1,
@@ -105,6 +131,54 @@
           ],
         },
       ];
+
+      // Redux 스토어 생성
+      const store = Redux.createStore(reducer);
+
+      // reducer
+      function reducer(state, action) {
+        console.log("Redux Action:", action); // Redux 액션 로깅
+
+        if (state === undefined) {
+          return {
+            listing: listings,
+            activeFilters: [],
+            filteredListings: listings,
+          };
+        }
+
+        if (action.type === "TOGGLE_FILTER") {
+          const newFilters = state.activeFilters.includes(action.filter)
+            ? state.activeFilters.filter((f) => f !== action.filter)
+            : [...state.activeFilters, action.filter];
+
+          const filteredListings =
+            newFilters.length === 0
+              ? state.listings
+              : state.listings.filter((listing) =>
+                  newFilter.every((filter) => listing.amnities.includes(filter))
+                );
+
+          return {
+            ...state,
+            activeFilter: newFilters,
+            filteredListings: filteredListings,
+          };
+        }
+
+        return state;
+      }
+
+      // 액션 디스패치
+      function toggleFilter(filter) {
+        store.dispatch({ type: "TOGGLE_FILTER", filter: filter });
+      }
+
+      // UI 업데잍 함수들
+      function updateUI() {
+        const state = store.getState();
+        console.log("Current State:", state);
+      }
     </script>
   </body>
 </html>
