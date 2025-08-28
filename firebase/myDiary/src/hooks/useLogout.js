@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { appAuth } from "../firebase/config";
+import { appAuth } from "../firebase/config.js";
 import { useAuthContext } from "./useAuthContext.js";
 import { signOut } from "firebase/auth";
 
