@@ -7,7 +7,7 @@ import { useCollection } from "../../hooks/useCollection";
 
 export default function Home() {
   const { user } = useAuthContext();
-  const { documents, error } = useCollection("diary");
+  const { documents, error } = useCollection("diary", ["uid", "==", user.uid]);
 
   // 오늘 날짜를 구하는 코드
   const date = new Date();
@@ -24,7 +24,14 @@ export default function Home() {
       </main>
       <section>
         <h2 className={styles["a11y-hidden"]}>일기 목록</h2>
-        <ul>{documents && <DiaryList list={documents} />}</ul>
+        <ul>
+          {documents && (
+            <li>
+              <DiaryList list={documents} />
+            </li>
+          )}
+          {error && <li>{error}</li>}
+        </ul>
       </section>
     </div>
   );

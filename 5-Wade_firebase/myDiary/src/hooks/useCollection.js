@@ -1,18 +1,35 @@
 import { appFireStore } from "../firebase/config";
 import { useEffect, useState } from "react";
-import { onSnapshot } from "firebase/firestore";
-import { collection } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  query,
+  where,
+  orderBy,
+} from "firebase/firestore";
 
-export const useCollection = (transaction) => {
+export const useCollection = (transaction, myQuery) => {
   // 문서들의 데이터를 관리합니다.
   const [documents, setDocuments] = useState(null);
   // 에러 상태를 관리합니다.
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let q;
+    if (myQuery) {
+      // 파이어스터어의 기본 함수 query
+      // 첫번째 매개변수 : 컬랙션의 참조
+      // 두번째 매개변수 : 쿼리 조건
+      q = query(
+        collection(appFireStore, transaction),
+        where(...myQuery),
+        orderBy("createdTime", "desc")
+      );
+    }
+
     // onSnapshot 함수는 가장 최신의 컬랙션의 내용을 반환하는 함수입니다. 함수는 데이터 수신을 중단하기 위한 unsubscribe 함수를 반환합니다. 더 이상 데이터를 수신 대기할 필요가 없을때 사용합니다.
     const unsubscribe = onSnapshot(
-      collection(appFireStore, transaction),
+      myQuery ? q : collection(appFireStore, transaction),
       // 1.컬랙션의 참조를 첫번째 매개변수로 넣어줍니다.
 
       // 2. 두번째 매개변수는 콜백함수입니다.

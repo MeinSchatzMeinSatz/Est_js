@@ -1,4 +1,10 @@
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  Timestamp,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { appFireStore } from "../firebase/config";
 import { useReducer } from "react";
 
@@ -15,6 +21,13 @@ const initState = {
 // 전달 받는 action에 따른 state 업데이트를 위한 함수입니다.
 const storeReducer = (state, action) => {
   switch (action.type) {
+    case "deleteDoc":
+      return {
+        document: null,
+        isPending: false,
+        error: null,
+        success: true,
+      };
     case "addDoc":
       return {
         document: action.payload,
@@ -68,7 +81,15 @@ export const useFireStore = (transaction) => {
   };
 
   // 컬렉션에서 데이터를 제거하는 함수
-  const deleteDocument = (id) => {};
+  const deleteDocument = async (id) => {
+    dispatch({ type: "isPending" });
+    try {
+      await deleteDoc(doc(colRef, id));
+      dispatch({ type: "deleteDoc" });
+    } catch (error) {
+      dispatch({ type: "error", payload: error.message });
+    }
+  };
 
   // 컬렉션에서 데이터를 수정하는 함수
   const editDocument = (id) => {};
